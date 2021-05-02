@@ -40,9 +40,9 @@ class ArtistListView(APIView):
             'id':key,
             'name':string_name,
             'age':request.data['age'],
-            'albums':'http://127.0.0.1:8000/artists/'+key+'/albums',
-            'tracks':'http://127.0.0.1:8000/artists/'+key+'/tracks',
-            'self_url':'http://127.0.0.1:8000/artists/'+key,
+            'albums':'https://t2-tallerintegracion-sm.herokuapp.com/artists/'+key+'/albums',
+            'tracks':'https://t2-tallerintegracion-sm.herokuapp.com/artists/'+key+'/tracks',
+            'self_url':'https://t2-tallerintegracion-sm.herokuapp.com/artists/'+key,
         }
         serializer = ArtistListSerializer(data=data)
         if serializer.is_valid():
@@ -127,9 +127,9 @@ class ArtistAlbumsView(APIView):
                 'name':string_name,
                 'genre':request.data['genre'],
                 'artist_id':artist_id,
-                'artist':'http://127.0.0.1:8000/artists/'+artist_id,
-                'tracks':'http://127.0.0.1:8000/albums/'+key+'/tracks',
-                'self_url':'http://127.0.0.1:8000/albums/'+key,
+                'artist':'https://t2-tallerintegracion-sm.herokuapp.com/artists/'+artist_id,
+                'tracks':'https://t2-tallerintegracion-sm.herokuapp.com/'+key+'/tracks',
+                'self_url':'https://t2-tallerintegracion-sm.herokuapp.com/albums/'+key,
             }
             serializer = AlbumListSerializer(data=data)
             if serializer.is_valid():
@@ -243,9 +243,9 @@ class AlbumTracksView(APIView):
                 'times_played':0,
                 'artist_id':artist_id,
                 'album_id':album_id,
-                'artist':'http://127.0.0.1:8000/artists/'+artist_id,
-                'album':'http://127.0.0.1:8000/albums/'+album_id,
-                'self_url':'http://127.0.0.1:8000/tracks/'+key,
+                'artist':'https://t2-tallerintegracion-sm.herokuapp.com/artists/'+artist_id,
+                'album':'https://t2-tallerintegracion-sm.herokuapp.com/albums/'+album_id,
+                'self_url':'https://t2-tallerintegracion-sm.herokuapp.com/tracks/'+key,
             }
             serializer = TrackListSerializer(data=data)
             if serializer.is_valid():
