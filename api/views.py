@@ -114,7 +114,7 @@ class ArtistAlbumsView(APIView):
             return Response({'error':'Bad Request'}, status=status.HTTP_400_BAD_REQUEST)
         try:
             artist = Artist.objects.get(id=artist_id)
-            string_name = request.data['name']
+            string_name = request.data['name']+artist_id
             key = b64encode(string_name.encode()).decode('utf-8')
             if len(key)>22:
                 key = key[:22]
@@ -226,7 +226,7 @@ class AlbumTracksView(APIView):
         try:
             album = Album.objects.get(id=album_id)
             artist_id = album.artist_id.id
-            string_name = request.data['name']
+            string_name = request.data['name']+album_id
             key = b64encode(string_name.encode()).decode('utf-8')
             if len(key)>22:
                 key = key[:22]
