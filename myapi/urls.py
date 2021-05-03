@@ -13,8 +13,6 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from django.conf import settings
-from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
 from rest_framework.urlpatterns import format_suffix_patterns
@@ -34,4 +32,4 @@ urlpatterns = [
     path('albums/<str:album_id>/tracks/play', views.AlbumTracksView.as_view()),
     path('tracks/<str:id>', views.TrackDetailView.as_view()),
     path('tracks/<str:id>/play', views.TrackDetailView.as_view()),
-] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+]
