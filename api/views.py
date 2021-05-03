@@ -6,7 +6,7 @@ from rest_framework.response import Response
 from rest_framework import status
 from .models import Artist, Album, Track
 from .serializers import ArtistListSerializer, AlbumListSerializer, TrackListSerializer
-import base64
+from base64 import b64encode
 
 # Create your views here.
 class ArtistListView(APIView):
@@ -31,9 +31,7 @@ class ArtistListView(APIView):
         elif type(request.data['name']) != str or type(request.data['age'])!= int:
             return Response({'error':'Bad Request'}, status=status.HTTP_400_BAD_REQUEST)
         string_name = request.data['name']
-        bytes_name = string_name.encode('utf-8')
-        encoded = base64.b64encode(bytes_name)
-        key = encoded.decode()
+        key = b64encode(string_name.encode()).decode('utf-8')
         if len(key)>22:
             key = key[:22]
         data={
@@ -117,9 +115,7 @@ class ArtistAlbumsView(APIView):
         try:
             artist = Artist.objects.get(id=artist_id)
             string_name = request.data['name']
-            bytes_name = string_name.encode('utf-8')
-            encoded = base64.b64encode(bytes_name)
-            key = encoded.decode()
+            key = b64encode(string_name.encode()).decode('utf-8')
             if len(key)>22:
                 key = key[:22]
             data={
@@ -231,9 +227,7 @@ class AlbumTracksView(APIView):
             album = Album.objects.get(id=album_id)
             artist_id = album.artist_id.id
             string_name = request.data['name']
-            bytes_name = string_name.encode('utf-8')
-            encoded = base64.b64encode(bytes_name)
-            key = encoded.decode()
+            key = b64encode(string_name.encode()).decode('utf-8')
             if len(key)>22:
                 key = key[:22]
             data={
