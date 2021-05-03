@@ -128,7 +128,7 @@ class ArtistAlbumsView(APIView):
                 'genre':request.data['genre'],
                 'artist_id':artist_id,
                 'artist':'https://t2-tallerintegracion-sm.herokuapp.com/artists/'+artist_id,
-                'tracks':'https://t2-tallerintegracion-sm.herokuapp.com/'+key+'/tracks',
+                'tracks':'https://t2-tallerintegracion-sm.herokuapp.com/albums/'+key+'/tracks',
                 'self_url':'https://t2-tallerintegracion-sm.herokuapp.com/albums/'+key,
             }
             serializer = AlbumListSerializer(data=data)
