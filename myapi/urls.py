@@ -19,15 +19,15 @@ from rest_framework.urlpatterns import format_suffix_patterns
 from api import views
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('artists/', views.ArtistListView.as_view()),
+    path('admin', admin.site.urls),
+    path('artists', views.ArtistListView.as_view()),
     path('artists/<str:id>', views.ArtistDetailView.as_view()),
     path('artists/<str:artist_id>/albums', views.ArtistAlbumsView.as_view()),
     path('artists/<str:artist_id>/tracks', views.ArtistTracksView.as_view()),
     path('artists/<str:artist_id>/albums/play', views.ArtistAlbumsView.as_view()),
-    path('albums/', views.AlbumListView.as_view()),
+    path('albums', views.AlbumListView.as_view()),
     path('albums/<str:id>', views.AlbumDetailView.as_view()),
-    path('tracks/', views.TrackListView.as_view()),
+    path('tracks', views.TrackListView.as_view()),
     path('albums/<str:album_id>/tracks', views.AlbumTracksView.as_view()),
     path('albums/<str:album_id>/tracks/play', views.AlbumTracksView.as_view()),
     path('tracks/<str:id>', views.TrackDetailView.as_view()),
